@@ -5,6 +5,7 @@ import 'package:a_example_flutter/training_camp/basics_1.dart';
 import 'package:a_example_flutter/training_camp/basics_2.dart';
 import 'package:a_example_flutter/training_camp/basics_3.dart';
 import 'package:a_example_flutter/layout/container.dart';
+import 'package:a_example_flutter/layout/table.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         'basics_2': (context) => Basics_2(),
         'basics_3': (context) => Basics_3(),
         'container': (context) => ContainerPage(),
+        'table': (context) => TablePage(),
 
       } ,
       home: HomePage(title: 'Flutter Demo Home Page'),

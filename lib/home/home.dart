@@ -63,6 +63,15 @@ class _HomePageState extends State<HomePage> {
               ),
               onPressed: () => Navigator.pushNamed(context, 'container'),
             ),
+            FlatButton(
+              padding: EdgeInsets.all(0),
+              child: Chip(
+                avatar: CircleAvatar(
+                    backgroundColor: Colors.blue, child: new Text('D', style: TextStyle(fontSize: 12.0),)),
+                label: Text('Table'),
+              ),
+              onPressed: () => Navigator.pushNamed(context, 'table'),
+            ),
           ],
         )
       ),
