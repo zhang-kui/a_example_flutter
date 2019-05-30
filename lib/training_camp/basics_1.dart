@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 
-void main() => runApp(new MyApp());
 
 // 添加一个 有状态的部件（Stateful widget）
+class RandomWords extends StatefulWidget {
+  @override
+  createState() => RandomWordsState();
+}
+
 class RandomWordsState extends State<RandomWords> {
   final _suggestions = <WordPair>[];
-  final _saved = new Set<WordPair>();
-  final _biggerFont = const TextStyle(fontSize: 18.0);
+  final _saved = Set<WordPair>();
+  final _biggerFont = const TextStyle(fontSize: 18.0,color: Colors.blue);
 
   Widget _buildSuggestions() {
-    return new ListView.builder(
+    return ListView.builder(
       padding: const EdgeInsets.all(16.0),
       // 对于每个建议的单词对都会调用一次itemBuilder，然后将单词对添加到ListTile行中
       // 在偶数行，该函数会为单词对添加一个ListTile row.
@@ -18,7 +22,7 @@ class RandomWordsState extends State<RandomWords> {
       // 注意，在小屏幕上，分割线看起来可能比较吃力。
       itemBuilder: (context, i) {
         // 在每一列之前，添加一个1像素高的分隔线widget
-        if (i.isOdd) return new Divider();
+        if (i.isOdd) return Divider();
 
         // 语法 "i ~/ 2" 表示i除以2，但返回值是整形（向下取整），比如i为：1, 2, 3, 4, 5
         // 时，结果为0, 1, 1, 2, 2， 这可以计算出ListView中减去分隔线后的实际单词对数量
@@ -32,14 +36,15 @@ class RandomWordsState extends State<RandomWords> {
       }
     );
   }
+
   Widget _buildRow(WordPair pair) {
     final alreadySaved = _saved.contains(pair);
-    return new ListTile(
-      title: new Text(
+    return ListTile(
+      title: Text(
         pair.asPascalCase,
         style: _biggerFont,
       ),
-      trailing: new Icon(
+      trailing: Icon(
         alreadySaved ? Icons.favorite : Icons.favorite_border,
         color: alreadySaved ? Colors.red : null,
       ),
@@ -54,13 +59,16 @@ class RandomWordsState extends State<RandomWords> {
       },
     );
   }
+
   @override
   Widget build(BuildContext context) {
-    // final wordPair = new WordPair.random();
-    // return new Text(wordPair.asPascalCase);
-    return new Scaffold (
-      appBar: new AppBar(
-        title: new Text('Startup Name Generator'),
+    // final wordPair = WordPair.random();
+    // return Text(wordPair.asPascalCase);
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text('Basics_1'),
+        centerTitle: true,
         actions: <Widget>[
           new IconButton(icon: new Icon(Icons.list), onPressed: _pushSaved),
         ],
@@ -68,14 +76,15 @@ class RandomWordsState extends State<RandomWords> {
       body: _buildSuggestions(),
     );
   }
+
   void _pushSaved() {
     Navigator.of(context).push(
-      new MaterialPageRoute(
+      MaterialPageRoute(
         builder: (context) {
           final tiles = _saved.map(
             (pair) {
-              return new ListTile(
-                title: new Text(
+              return ListTile(
+                title: Text(
                   pair.asPascalCase,
                   style: _biggerFont,
                 ),
@@ -89,46 +98,22 @@ class RandomWordsState extends State<RandomWords> {
             )
             .toList();
 
-          return new Scaffold(
-            appBar: new AppBar(
-              title: new Text('Saved Suggestions'),
+          return Scaffold(
+            backgroundColor: Colors.white,
+            appBar: AppBar(
+              title: Text('Saved Suggestions'),
             ),
-            body: new ListView(children: divided),
+            body: ListView(children: divided),
           );
         },
       ),
-      );
+    );
   }
 }
 
-class RandomWords extends StatefulWidget {
+class Basics_1 extends StatelessWidget {
   @override
-  createState() => new RandomWordsState();
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  // Widget build(BuildContext context) {
-  //   return new MaterialApp(
-  //     title: 'Welcome to Flutter',
-  //     home: new Scaffold(
-  //       appBar: new AppBar(
-  //         title: new Text('Welcome to Flutter'),
-  //       ),
-  //       body: new Center(
-  //         //child: new Text(wordPair.asPascalCase),
-  //         child: new RandomWords(),
-  //       ),
-  //     ),
-  //   );
-  // }
   Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Startup Name Generator',
-      theme: new ThemeData(
-        primaryColor: Colors.purple,
-      ),
-      home: new RandomWords(),
-    );
+    return RandomWords();
   }
 }

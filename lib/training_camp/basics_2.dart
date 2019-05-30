@@ -3,17 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:english_words/english_words.dart';
 
-void main() => runApp(new MyApp());
-
 // StatefulWidget子类
 class FavoriteWidget extends StatefulWidget {
   @override
-  _FavoriteWidgetState createState() => new _FavoriteWidgetState();
+  _FavoriteWidgetState createState() => _FavoriteWidgetState();
 }
 
 class TouchButtonWidget extends StatefulWidget {
   @override
-  _TouchButtonWidgetState createState() => new _TouchButtonWidgetState();
+  _TouchButtonWidgetState createState() => _TouchButtonWidgetState();
 }
 
 // State子类
@@ -36,23 +34,23 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return new Row(
-      mainAxisSize: MainAxisSize.min,
+    return Row(
+      mainAxisSize: MainAxisSize.max,
       children: [
-        new Container(
-          padding: new EdgeInsets.all(0.0),
-          child: new IconButton(
+        Container(
+          padding: EdgeInsets.all(0.0),
+          child: IconButton(
             icon: (_isFavorited
-                ? new Icon(Icons.star)
-                : new Icon(Icons.star_border)),
+                ? Icon(Icons.star)
+                : Icon(Icons.star_border)),
             color: Colors.red[500],
             onPressed: _toggleFavorite,
           ),
         ),
-        new SizedBox(
+        SizedBox(
           width: 18.0,
-          child: new Container(
-            child: new Text('$_favoriteCount'),
+          child: Container(
+            child: Text('$_favoriteCount'),
           ),
         ),
       ],
@@ -67,25 +65,25 @@ class _TouchButtonWidgetState extends State<TouchButtonWidget> {
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return new AlertDialog(
-          title: new Text('温馨提示'),
-          content: new SingleChildScrollView(
-            child: new ListBody(
+        return AlertDialog(
+          title: Text('温馨提示'),
+          content: SingleChildScrollView(
+            child: ListBody(
               children: <Widget>[
-                new Text(
+                Text(
                     '温馨提示的消息内容,温馨提示的消息内容,温馨提示的消息内容,温馨提示的消息内容,温馨提示的消息内容,温馨提示的消息内容,温馨提示的消息内容,温馨提示的消息内容,温馨提示的消息内容,温馨提示的消息内容!!!'),
-                new Text(
+                Text(
                     '无参函数调用,无参函数调用,无参函数调用,无参函数调用,无参函数调用,无参函数调用,无参函数调用,无参函数调用,无参函数调用,无参函数调用,无参函数调用!!!'),
-                new Text(
+                Text(
                     '试试有很多消息是什么效果,试试有很多消息是什么效果,试试有很多消息是什么效果,试试有很多消息是什么效果,试试有很多消息是什么效果,试试有很多消息是什么效果,试试有很多消息是什么效果,试试有很多消息是什么效果,试试有很多消息是什么效果,试试有很多消息是什么效果!!!'),
-                new Text(
+                Text(
                     '再多点消息呢,再多点消息呢,再多点消息呢,再多点消息呢,再多点消息呢,再多点消息呢,再多点消息呢,再多点消息呢,再多点消息呢,再多点消息呢,再多点消息呢,再多点消息呢,再多点消息呢,再多点消息呢,再多点消息呢,再多点消息呢,再多点消息呢,再多点消息呢,再多点消息呢,再多点消息呢,再多点消息呢!!!'),
               ],
             ),
           ),
           actions: <Widget>[
-            new FlatButton(
-              child: new Text('确定'),
+            FlatButton(
+              child: Text('确定'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -100,21 +98,22 @@ class _TouchButtonWidgetState extends State<TouchButtonWidget> {
 
   Column buildButtonColumn(IconData icon, String label) {
     Color color = Colors.red;
-    return new Column(
-      mainAxisSize: MainAxisSize.min,
+    return Column(
+      mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        new MaterialButton(
-          child: new Column(
-            mainAxisSize: MainAxisSize.min,
+        MaterialButton(
+          padding: EdgeInsets.all(10),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              new Icon(icon, color: color),
-              new Container(
+              Icon(icon, color: color),
+              Container(
                 margin: const EdgeInsets.all(4.0),
-                child: new Text(
+                child: Text(
                   label,
-                  style: new TextStyle(
+                  style: TextStyle(
                     fontSize: 12.0,
                     fontWeight: FontWeight.w400,
                     color: color,
@@ -131,7 +130,7 @@ class _TouchButtonWidgetState extends State<TouchButtonWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return new Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         buildButtonColumn(Icons.call, 'CALL'),
@@ -142,7 +141,7 @@ class _TouchButtonWidgetState extends State<TouchButtonWidget> {
   }
 }
 
-class MyApp extends StatelessWidget {
+class Basics_2 extends StatelessWidget {
   @override
   _onClick() {
     print('手势函数-点击-调用的');
@@ -163,55 +162,55 @@ class MyApp extends StatelessWidget {
     //   SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
     // }
 
-    Widget titleSection = new Container(
+    Widget titleSection = Container(
       padding: const EdgeInsets.all(32.0),
-      child: new Row(
+      child: Row(
         children: [
-          new Expanded(
-            child: new Column(
+          Expanded(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                new Container(
+                Container(
                   padding: const EdgeInsets.only(bottom: 8.0),
-                  child: new Text(
+                  child: Text(
                     'Oeschinen Lake Campground',
-                    style: new TextStyle(
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.black87,
                     ),
                   ),
                 ),
-                new Text(
+                Text(
                   'Kandersteg, Switzerland',
-                  style: new TextStyle(
+                  style: TextStyle(
                     color: Colors.grey[500],
                   ),
                 ),
               ],
             ),
           ),
-          // new Icon(
+          // Icon(
           //   Icons.star,
           //   color: Colors.red[500],
           // ),
-          // new Text('41'),
-          new FavoriteWidget(),
+          // Text('41'),
+          FavoriteWidget(),
         ],
       ),
     );
 
     Column buildButtonColumn(IconData icon, String label) {
       Color color = Theme.of(context).primaryColor;
-      return new Column(
-        mainAxisSize: MainAxisSize.min,
+      return Column(
+        mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          new Icon(icon, color: color),
-          new Container(
+          Icon(icon, color: color),
+          Container(
             margin: const EdgeInsets.all(4.0),
-            child: new Text(
+            child: Text(
               label,
-              style: new TextStyle(
+              style: TextStyle(
                 fontSize: 12.0,
                 fontWeight: FontWeight.w400,
                 color: color,
@@ -222,8 +221,9 @@ class MyApp extends StatelessWidget {
       );
     }
 
-    Widget statelessButtonSection = new Container(
-      child: new Row(
+    Widget statelessButtonSection = Container(
+      padding: EdgeInsets.only(bottom: 16.0),
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           buildButtonColumn(Icons.call, 'CALL'),
@@ -233,39 +233,33 @@ class MyApp extends StatelessWidget {
       ),
     );
 
-    Widget textSection = new Container(
+    Widget textSection = Container(
       padding: const EdgeInsets.only(
         top: 20.0,
         right: 32.0,
         bottom: 20.0,
         left: 32.0,
       ),
-      child: new Text(
+      child: Text(
         '''
         Lake Oeschinen lies at the foot of the Blüemlisalp in the Bernese Alps. Situated 1,578 meters above sea level, it is one of the larger Alpine Lakes. A gondola ride from Kandersteg, followed by a half-hour walk through pastures and pine forest, leads you to the lake, which warms to 20 degrees Celsius in the summer. Activities enjoyed here include rowing, and riding the summer toboggan run.
         ''',
         softWrap: true,
-        style: new TextStyle(
+        style: TextStyle(
           fontSize: 12.0,
           color: Colors.black87,
         ),
       ),
     );
 
-    return new MaterialApp(
-      title: 'Flutter Demo',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: new Scaffold(
+    return Scaffold(
           backgroundColor: Colors.white,
-          appBar: new AppBar(
-              // backgroundColor: Colors.transparent,
-              title: new Text('Welcome to Flutter'),
+          appBar: AppBar(
+              title: Text('Basics_2'),
               centerTitle: true),
-          body: new ListView(
+          body: ListView(
             children: [
-              new Container(
+              Container(
                 child: GestureDetector(
                   onTap: _onClick, //手势函数名 点击
                   onDoubleTap: _onDoubleClick, //手势函数名 双击
@@ -278,7 +272,7 @@ class MyApp extends StatelessWidget {
                     print('手势函数-水平拖动结束-调用的');
                     print(endDetails);
                   }, //手势函数名 水平拖动结束
-                  child: new Image.asset(
+                  child: Image.asset(
                     'assets/img_01.png',
                     fit: BoxFit.cover,
                   ),
@@ -286,8 +280,8 @@ class MyApp extends StatelessWidget {
               ),
               titleSection,
               statelessButtonSection,
+              TouchButtonWidget(),
               textSection,
-              new TouchButtonWidget(),
               textSection,
               textSection,
               textSection,
@@ -297,7 +291,7 @@ class MyApp extends StatelessWidget {
               textSection,
               textSection,
             ],
-          )),
-    );
+          )
+        );
   }
 }
