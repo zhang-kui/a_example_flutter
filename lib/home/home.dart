@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget {
-  Home({Key key, this.title}) : super(key: key);
+class HomePage extends StatefulWidget {
+  HomePage({Key key, this.title}) : super(key: key);
   final String title;
   @override
-  _HomeState createState() => _HomeState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class _HomeState extends State<Home> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
 
@@ -54,25 +54,14 @@ class _HomeState extends State<Home> {
               ),
               onPressed: () => Navigator.pushNamed(context, 'basics_3'),
             ),
-            Chip(
-              avatar: CircleAvatar(
-                  backgroundColor: Colors.blue, child: new Text('D', style: TextStyle(fontSize: 12.0),)),
-              label: Text('Camp4'),
-            ),
-            Chip(
-              avatar: CircleAvatar(
-                  backgroundColor: Colors.blue, child: new Text('E', style: TextStyle(fontSize: 12.0),)),
-              label: Text('Camp5'),
-            ),
-            Chip(
-              avatar: CircleAvatar(
-                  backgroundColor: Colors.blue, child: new Text('F', style: TextStyle(fontSize: 12.0),)),
-              label: Text('Camp6'),
-            ),
-            Chip(
-              avatar: CircleAvatar(
-                  backgroundColor: Colors.blue, child: new Text('G', style: TextStyle(fontSize: 12.0),)),
-              label: Text('Camp7'),
+            FlatButton(
+              padding: EdgeInsets.all(0),
+              child: Chip(
+                avatar: CircleAvatar(
+                    backgroundColor: Colors.blue, child: new Text('C', style: TextStyle(fontSize: 12.0),)),
+                label: Text('Container'),
+              ),
+              onPressed: () => Navigator.pushNamed(context, 'container'),
             ),
           ],
         )
